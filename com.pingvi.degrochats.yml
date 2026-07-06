@@ -1,0 +1,37 @@
+app-id: com.pingvi.degrochats
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: degrochats
+
+finish-args:
+  - --share=network
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --talk-name=org.freedesktop.Notifications
+  - --device=all
+  - --filesystem=home
+
+modules:
+  - name: degrochats
+    buildsystem: simple
+    build-commands:
+      # Установка бинарного файла и библиотек
+      - install -D degrochats /app/bin/degrochats
+      - cp -ra lib /app/bin/
+      # Установка иконки и ярлыков (они должны лежать рядом с .yml)
+      - install -Dm644 com.pingvi.degrochats.png /app/share/icons/hicolor/256x256/apps/com.pingvi.degrochats.png
+      - install -Dm644 com.pingvi.degrochats.desktop /app/share/applications/com.pingvi.degrochats.desktop
+      - install -Dm644 com.pingvi.degrochats.metainfo.xml /app/share/metainfo/com.pingvi.degrochats.metainfo.xml
+    sources:
+      - type: archive
+        url: https://github.com/pingvi-z/degrochats-linux-releases/releases/download/v1.1.0/degrochats-linux.tar.gz
+        sha256: d8110af06347b72fcd75ad2f3d34b5886ed11042c3074059a173602db5f67a5a
+      - type: file
+        path: linux/com.pingvi.degrochats.desktop
+      - type: file
+        path: linux/com.pingvi.degrochats.metainfo.xml
+      - type: file
+        path: assets/icons/icon.png
+        dest-filename: com.pingvi.degrochats.png
