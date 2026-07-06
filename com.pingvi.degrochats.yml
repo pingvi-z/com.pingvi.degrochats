@@ -29,9 +29,9 @@ modules:
         url: https://github.com/pingvi-z/degrochats-linux-releases/releases/download/v1.1.0/degrochats-linux.tar.gz
         sha256: d8110af06347b72fcd75ad2f3d34b5886ed11042c3074059a173602db5f67a5a
       - type: file
-        path: linux/com.pingvi.degrochats.desktop
+        path: com.pingvi.degrochats.desktop
       - type: file
-        path: linux/com.pingvi.degrochats.metainfo.xml
+        path: com.pingvi.degrochats.metainfo.xml
       - type: file
-        path: assets/icons/icon.png
-        dest-filename: com.pingvi.degrochats.png
+        path: com.pingvi.degrochats.png
+    
